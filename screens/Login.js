@@ -1,19 +1,19 @@
 import * as React from 'react';
 import { View, Text, TextInput, TouchableOpacity, ScrollView} from "react-native";
-import { styleFormat } from "../css/styles";
+import { style } from "../css/styles";
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 
 
 export default function Login ({navigation}) {
     return(
-        <View style={styleFormat.container}>
+        <View style={style.container}>
             <ScrollView>
 
-                <View style={styleFormat.cxInput}>
+                <View style={style.cxInput}>
 
                     <TextInput
-                    style={styleFormat.input}
+                    style={style.input}
                     placeholder="Nome Usuário"
                     //   value={usuario}
                     keyboardType="email-address"
@@ -21,7 +21,7 @@ export default function Login ({navigation}) {
                     />
 
                     <TextInput
-                    style={styleFormat.input}
+                    style={style.input}
                     placeholder="Senha"
                     //   value={senha}
                     keyboardType="default"
@@ -30,12 +30,12 @@ export default function Login ({navigation}) {
                     />
                 </View>
 
-                <TouchableOpacity style={styleFormat.btnLogin} >
-                    <Text style={styleFormat.txtLogin}> Cadastrar </Text>
+                <TouchableOpacity style={style.btnLogin} >
+                    <Text style={style.txtLogin}> Cadastrar </Text>
                 </TouchableOpacity>
 
                 <TouchableOpacity
-                    style={styleFormat.btn}
+                    style={style.btnLogin}
                     onPress={() => navigation.navigate("Cadastro")}
                     >
                     <Text> Cadastro </Text>

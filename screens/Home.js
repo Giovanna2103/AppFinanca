@@ -1,6 +1,6 @@
 import * as React from "react";
 import { View, Text, TextInput, Picker, Alert, ToastAndroid } from "react-native";
-import { styleFormat } from "../css/styles";
+import { style } from "../css/styles";
 import { TouchableOpacity, ScrollView } from "react-native-gesture-handler";
 
 

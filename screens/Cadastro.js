@@ -1,6 +1,6 @@
 import * as React from "react";
 import { View, Text, TextInput, Picker, Alert, ToastAndroid } from "react-native";
-import { styleFormat } from "../css/styles";
+import { style } from "../css/styles";
 import { TouchableOpacity, ScrollView } from "react-native-gesture-handler";
 import { ipserver} from "../config/settings"
 
@@ -24,15 +24,15 @@ export default function Cadastro() {
   const [email, setEmail] = React.useState("");
 
   return (
-    <View style={styleFormat.container}>
+    <View style={style.container}>
       <ScrollView horizontal={false}>
         
 
         {/* Começo  Área do cadastro de Cliente */}
 
-        <View style={styleFormat.cxInput}>
+        <View style={style.cxInput}>
           <TextInput
-            style={styleFormat.input}
+            style={style.input}
             placeholder="Nome Cliente"
             value={nomecliente}
             keyboardType="default"
@@ -44,7 +44,7 @@ export default function Cadastro() {
             mode="dialog"
             selectedValue={sexo}
             onValueChange={setSexo}
-            style={styleFormat.cxsexo}
+            style={style.cxsexo}
           >
             <Picker.Item label="Masculino" value="M" />
             <Picker.Item label="Feminino" value="F" />
@@ -60,7 +60,7 @@ export default function Cadastro() {
 
 
           <TextInput
-            style={styleFormat.input}
+            style={style.input}
             placeholder="Email"
             value={email}
             keyboardType="email-address"
@@ -76,7 +76,7 @@ export default function Cadastro() {
         {/* Começo  Área do cadastro de Usuario */}
 
           <TextInput
-            style={styleFormat.input}
+            style={style.input}
             placeholder="Nome Usuário"
             value={usuario}
             keyboardType="email-address"
@@ -84,7 +84,7 @@ export default function Cadastro() {
           />
 
           <TextInput
-            style={styleFormat.input}
+            style={style.input}
             placeholder="Senha"
             value={senha}
             keyboardType="default"
@@ -99,7 +99,7 @@ export default function Cadastro() {
 
 
         <TouchableOpacity
-          style={styleFormat.btnCadastro}
+          style={style.btnCadastro}
           onPress={() => {
             us = usuario;
             sh = senha;
@@ -110,7 +110,7 @@ export default function Cadastro() {
             ToastAndroid.showWithGravity("Aguarde... Efetuando o cadastro", ToastAndroid.SHORT, ToastAndroid.CENTER);
           }}
         >
-          <Text style={styleFormat.txtCadastro}> Cadastrar </Text>
+          <Text style={style.txtCadastro}> Cadastrar </Text>
         </TouchableOpacity>
       </ScrollView>
     </View>
