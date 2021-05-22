@@ -6,22 +6,22 @@ import { ipserver} from "../config/settings"
 
 let us = ""; // USUARIO
 let sh = ""; // SENHA
-
+let em = ""; // email
 let nc = ""; // nome completo
+let dn = ""; //  data nascimento
 let sx = ""; // sexo
 
-let em = ""; // email
 
 
 export default function Cadastro() {
   const [usuario, setUsuario] = React.useState("");
   const [senha, setSenha] = React.useState("");
-
+  const [email, setEmail] = React.useState("");
   const [nomecliente, setNomeCliente] = React.useState("");
+  const [datanascimento, setDataNascimento] = React.useState("");
   const [sexo, setSexo] = React.useState("");
 
 
-  const [email, setEmail] = React.useState("");
 
   return (
     <View style={style.container}>
@@ -33,12 +33,19 @@ export default function Cadastro() {
         <View style={style.cxInput}>
           <TextInput
             style={style.input}
-            placeholder="Nome Cliente"
+            placeholder="Nome Completo"
             value={nomecliente}
             keyboardType="default"
             onChangeText={(value) => setNomeCliente(value)}
           />
 
+          <TextInput
+            style={style.input}
+            placeholder="Data Nascimento"
+            value={datanascimento}
+            keyboardType="numbers-and-punctuation"
+            onChangeText={(value) => setDataNascimento(value)}
+          />
 
           <Picker
             mode="dialog"
@@ -103,6 +110,8 @@ export default function Cadastro() {
           onPress={() => {
             us = usuario;
             sh = senha;
+            em = email;
+            dn = datanascimento;
             nc = nomecliente;
             sx = sexo;
 
@@ -119,82 +128,28 @@ export default function Cadastro() {
 
 function efetuarCadastro() {
   let idusuario = "";
-  let idcontato = "";
-
-  fetch(`${ipserver}/usuario/cadastro`, {
-    method: "POST",
-    headers: {
-      accept: "application/json",
-      "content-type": "application/json",
-    },
-    body: JSON.stringify({
-      nomeusuario: us,
-      senha: sh,
-    }),
-  })
-    .then((response) => response.json())
-    .then((rs) => idusuario = rs.output.insertId)
-    .catch((error) => console.error(`Erro ao tentar cadastrar -> ${error}`));
-    
-
-  // --------------------------------------------------------------------------------------------------------------------------------------
 
 
-  fetch(`${ipserver}/contato/cadastro`, {
-    method: "POST",
-    headers: {
-      accept: "application/json",
-      "content-type": "application/json",
-    },
-    body: JSON.stringify({
-      email: em,
-    }),
-  })
-    .then((response) => response.json())
-    .then((rs) => idcontato = rs.output.insertId)
-    .catch((error) => console.error(`Erro ao tentar cadastrar -> ${error}`));
+    fetch(`${ipserver}/usuario/cadastro`, {
+      method: "POST",
+      headers: {
+        accept: "application/json",
+        "content-type": "application/json",
+      },
+      body: JSON.stringify({
+        nomeusuario: us,
+        senha: sh,
+        email: em,
+        nome:nc,
+        datanascimento:dn,
+        sexo:sx
 
-
-  // --------------------------------------------------------------------------------------------------------------------------------------
-
-
-
-  
-  
-
-
-    perai (2000).then(() => {
-
-      fetch(`${ipserver}/cliente/cadastro`, {
-        method: "POST",
-        headers: {
-          accept: "application/json",
-          "content-type": "application/json",
-        },
-        body: JSON.stringify({
-          nomecliente:nc,
-          sexo:sx,
-          idusuario:idusuario,
-          idcontato:idcontato,
-        }),
-      })
-        .then((response) => response.json())
-        .then((rs) => {
-          console.log(rs);
-          Alert.alert("Cadastro", "Cliente Cadastrado")
-        }
-          )
-        .catch((error) => Alert.alert("Erro", `Erro ao tentar cadastrar -> ${error}`));
-
+      }),
     })
+      .then((response) => response.json())
+      .then((rs) => console.log(rs))
+      .catch((error) => console.error(`Erro ao tentar cadastrar -> ${error}`));
 
-
-
-
+    
 }
 
-const perai = (tempo) => {
-  return new Promise((resolver) => {
-    setTimeout(resolver, tempo)
-  })
-}
