@@ -26,7 +26,6 @@ export const style = StyleSheet.create({
 
   },
 
-
   // --------- Tela Inicial -----------------
   
   logo: {
@@ -57,7 +56,16 @@ export const style = StyleSheet.create({
     flex: 1,
   },
 
-
+  logoHome:{
+      width: 350,
+      height: 250,
+      marginRight: "auto",
+      marginLeft: "auto",
+      marginBottom:100,
+      resizeMode: "contain",
+          
+     },
+    
   // ------------ Tela Cadastro ----------------
 
   cxsexo:{
@@ -86,24 +94,24 @@ export const style = StyleSheet.create({
 
   },
 
-
  // -------------- Tela de Login ---------------------
  
  logoLogin:{
-  width: 150,
-  height: 150,
+  width: 300,
+  height: 100,
   marginRight: "auto",
   marginLeft: "auto",
+  marginBottom:1,
   resizeMode: "contain",
 
  },
  
- 
  btnLogin:{
+   flexDirection:"row",
   marginTop:20,
   marginBottom:10,
   backgroundColor:'#c5e1a5',
-  padding:10,
+  padding:15,
   width:"90%",
   marginLeft:"auto",
   marginRight:"auto",
@@ -115,19 +123,20 @@ export const style = StyleSheet.create({
   color:'black',
   fontWeight:'bold',
   textAlign:'left',
-  fontSize:20
+  fontSize:20,
+  marginRight:180,
 
  },
 
-cxInputLogin:{
+  cxInputLogin:{
   backgroundColor:'white',
   padding:10,
   marginTop:10,
   marginBottom:5,
   
-},
+  },
 
-btnLoginCad:{
+  btnLoginCad:{
   padding:15,
   width:200,
   marginLeft:"auto",
@@ -149,6 +158,128 @@ btnLoginCad:{
   fontSize:25
 
  },
+
+//  -------------- Tela Home -----------------
+
+vBtnHome: {
+  flex:1,
+  flexDirection: "row",
+  width: "100%",
+  backgroundColor: "#66bb6a",
+
+},
+
+btnHome: {
+  padding: 10,
+  marginRight:25,
+  marginLeft:25,
+  alignItems: "center",
+  justifyContent: "center",
+
+},
+
+vSaldo:{
+  flex:1,
+  borderColor:'red',
+  borderWidth:3,
+
+},
+
+txtSaldo:{
+  fontSize:35,
+  marginTop:10,
+  marginBottom:10,
+
+},
+
+vHistorico:{
+  flex:4,
+  borderColor:'red',
+  borderWidth:3,
+  width:"100%",
+  marginTop:20
+
+},
+
+txtHistorico:{
+  fontSize:20,
+  marginTop:10,
+  marginBottom:10,
+
+},
+
+vDadosHistorico:{
+  flexDirection: "row",
+
+},
+
+txtconta:{
+  fontSize:20,
+  marginTop:10,
+  marginBottom:10,
+  marginLeft:15,
+  marginRight:15,
+  borderColor:'red',
+  borderWidth:2,
+
+},
+
+// ---------------------- Tela Adicionar -----------------------
+
+vAdd:{
+  flex:2,
+  flexDirection:"row",
+  width:"100%",
+  marginTop:20
+
+},
+
+txtAdd:{
+  fontSize:20,
+  marginTop:10,
+  marginBottom:10,
+  borderColor:'red',
+  borderWidth:3,
+  marginRight:4,
+  marginLeft:4,
+
+},
+
+vSaldoAdd:{
+  flex:1,
+  borderColor:'red',
+  borderWidth:3,
+  width:"80%",
+
+},
+
+txtSaldoAdd:{
+  fontSize:35,
+  marginTop:20,
+  marginBottom:10,
+  textAlign:"center"
+
+},
+
+
+// ----------------------- Tela Perfil --------------------------
+
+vPerfil:{
+  flex:5.9,
+  width:"100%",
+  marginTop:20
+
+},
+
+txtPerfil:{
+  fontSize:20,
+  marginTop:20,
+  marginBottom:10,
+  borderColor:'red',
+  borderWidth:3,
+
+},
+
 
 
  

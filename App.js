@@ -7,13 +7,14 @@ import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 import Login from "./screens/Login";
 import Cadastro from "./screens/Cadastro";
-import Home from "./screens/Home";
+import telaHome from "./screens/Home";
+
 
 const pilha = createStackNavigator();
 
 export default function App() {
   return (
-    <NavigationContainer>
+    <NavigationContainer independent={true}>
       <pilha.Navigator initialRoute="TelaInicial">
         <pilha.Screen
           name="TelaInicial"
@@ -21,7 +22,7 @@ export default function App() {
           options={{ headerShown: false }}
         />
         <pilha.Screen name="Login" component={Login} />
-        <pilha.Screen name="Home" component={Home} />
+        <pilha.Screen name="telaHome" component={telaHome} />
       </pilha.Navigator>
     </NavigationContainer>
   );
@@ -30,15 +31,11 @@ export default function App() {
 function TelaInicial({ navigation }) {
   return (
     <View style={style.container}>
-      <Image
-        source={{
-          uri:
-            "http://websafra.com.br/wp-content/uploads/2016/08/Icone-Porquinho.png",
-        }}
-        style={style.logo}
-      />
+
+    <Image source ={require('./assets/LogoApp2.png')} style={style.logoHome}/>
 
       <View style={style.btnApp}>
+
         <TouchableOpacity
           style={style.btn}
           onPress={() => navigation.navigate("Login")}
@@ -49,7 +46,7 @@ function TelaInicial({ navigation }) {
 
         <TouchableOpacity
           style={style.btn}
-          onPress={() => navigation.navigate("Home")}
+          onPress={() => navigation.navigate("telaHome")}
           >
           <MaterialCommunityIcons name="home-currency-usd" size={40} color="black" />          
           <Text> Home </Text>

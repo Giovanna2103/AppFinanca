@@ -2,7 +2,7 @@ import * as React from 'react';
 import { View, Text, TextInput, TouchableOpacity, ScrollView, Alert, Image} from "react-native";
 import { style } from "../css/styles";
 import Cadastro from './Cadastro';
-import Home from './Home';
+import telaHome from './Home';
 import { AntDesign } from '@expo/vector-icons';
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
@@ -12,6 +12,7 @@ import { ipserver } from '../config/settings';
 let nomeusuario = "";
 let email = "";
 let sh = "";
+let x = 0;
 
 
 const lista = createStackNavigator()
@@ -22,7 +23,7 @@ export default function Login () {
             <lista.Navigator>
              <lista.Screen name="telaLogin" component={telaLogin} options={{headerShown:false}}/>
              <lista.Screen name="cadastro" component={Cadastro} options={{headerShown:false}}/>
-             <lista.Screen name="Home" component={Home} options={{headerShown:false}}/>
+             <lista.Screen name="telaHome" component={telaHome} options={{headerShown:false}}/>
             </lista.Navigator>
         </NavigationContainer>
     )
@@ -35,13 +36,11 @@ function telaLogin({navigation}){
     return(
         <View style={style.container} >
             <ScrollView>
+            <Image source ={require('../assets/LogoApp2.png')} style={style.logoLogin}/>
+
 
                 <View style={style.cxInputLogin}>
-
-                    <Image source={require('../assets/LogoApp2.png')}
-                     style={style.logoLogin}
-                    />
-
+                    
                     <TextInput
                      style={style.input}
                      placeholder="Nome Usuário"
@@ -65,11 +64,21 @@ function telaLogin({navigation}){
                  nomeusuario=usumail;
                  email=usumail;
                  sh=senha;
-                 Logar();
-                 navigation.navigate("Home")
+
+                 wait(3000).then(()=>Logar()).then(()=>{
+                 console.log(x);
+                 if(x==1){
+                    Alert.alert("Aguarde.....", "Usuario não existente")
+                 }
+                 else{
+                    Alert.alert("Aguarde....", "ENTROUUUUUUUUU")
+                    navigation.navigate("telaHome")
+                 }
+                })
+
                  }}>
                  <Text style={style.txtLogin}> Entrar </Text>
-                  <AntDesign name="arrowright" size={20} color="black" style={{alignItems:"right"}}/>
+                  <AntDesign name="arrowright" size={30} color="black" />
                 </TouchableOpacity>
 
                 <Text style={style.txtLoginCad}>Ainda não tem uma conta</Text>
@@ -85,7 +94,10 @@ function telaLogin({navigation}){
     );
 }
 
+
+
 function Logar(){
+    
     fetch(`${ipserver}/usuario/login`,{
         method:"POST",
         headers:{
@@ -100,12 +112,19 @@ function Logar(){
     }).then((response) => response.json())
     .then((rs) => {
         if(rs.output=="" || rs.output==null){
-            Alert.alert("Aguarde.....", "Usuario não existente")
+            x = 1;
         }
         else{
-            Alert.alert("Aguarde....", "ENTROUUUUUUUUU")
+            x = 0;
         }
 
     }).catch((erro) => console.error(`Erro ao tentar logar ${erro}`))
 
+
+}
+
+const wait = (time) =>{
+    return new Promise((resolver)=>{
+        setTimeout(resolver,time)
+    })
 }
