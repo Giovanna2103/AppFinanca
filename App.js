@@ -21,8 +21,8 @@ export default function App() {
           component={TelaInicial}
           options={{ headerShown: false }}
         />
-        <pilha.Screen name="Login" component={Login} />
-        <pilha.Screen name="telaHome" component={telaHome} />
+        <pilha.Screen name="Login" component={Login} options={{headerShown:false}} />
+        <pilha.Screen name="telaHome" component={telaHome} options={{headerShown:false}}/>
       </pilha.Navigator>
     </NavigationContainer>
   );
