@@ -6,7 +6,7 @@
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "splash": {
-      "image": "./assets/porco2.png",
+      "image": "./assets/LogoApp2.png",
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },

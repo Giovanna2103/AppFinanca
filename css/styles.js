@@ -162,42 +162,48 @@ export const style = StyleSheet.create({
 //  -------------- Tela Home -----------------
 
 vBtnHome: {
-  flex:1,
+  flex:1.2,
   flexDirection: "row",
   width: "100%",
-  backgroundColor: "#66bb6a",
+  borderRadius:25,  
+  shadowColor: "black",
+  shadowOffset: { width: 10, height: 20 },
+  shadowOpacity: 0.9,
+  shadowRadius: 10,
+  elevation: 5,
 
 },
 
 btnHome: {
-  padding: 10,
-  marginRight:25,
-  marginLeft:25,
+  padding:25,
+  marginRight:10,
+  marginLeft:10,
   alignItems: "center",
   justifyContent: "center",
 
 },
 
 vSaldo:{
-  flex:1,
-  borderColor:'red',
-  borderWidth:3,
+  flex:2,
+  width:"100%",
+  backgroundColor:"#43a047",
 
 },
 
 txtSaldo:{
   fontSize:35,
-  marginTop:10,
+  marginTop:50,
   marginBottom:10,
+  color:"white",
+  textAlign:"center"
 
 },
 
 vHistorico:{
-  flex:4,
-  borderColor:'red',
-  borderWidth:3,
+  flex:5,
+  // borderColor:'red',
+  // borderWidth:3,
   width:"100%",
-  marginTop:20
 
 },
 
@@ -221,7 +227,7 @@ txtconta:{
   marginRight:15,
   borderColor:'red',
   borderWidth:2,
-
+  
 },
 
 // ---------------------- Tela Adicionar -----------------------
