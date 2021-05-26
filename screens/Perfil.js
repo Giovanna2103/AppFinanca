@@ -8,6 +8,10 @@ import { createStackNavigator } from "@react-navigation/stack";
 import { ipserver } from '../config/settings';
 import Teladd from "./Teladd";
 import telaHome from "./Home";
+import * as SQLite from 'expo-sqlite';
+
+const banco = SQLite.openDatabase("yourcash.banco");
+
 
 const lista = createStackNavigator()
 
@@ -29,9 +33,11 @@ function Perfil ({navigation}){
 
 
     React.useEffect(() => {
-        fetch(`${ipserver}/usuario/listar`)
-        .then((response) => response.json())
-        .then((rs) => setDados(rs.output)).catch((error) => console.error(`Dados não encontrado ${error}`))
+        banco.transaction((info) =>{
+            info.executeSql("select * from tbcelular", [], (_,{rows:{_array}}) => {
+                setDados(_array)
+            })
+        })
     },[])
 
     return(
@@ -42,9 +48,9 @@ function Perfil ({navigation}){
                 <ScrollView>
                     {
                         dados.map((item, index) => (
-                            <View>
+                            <View key={item.id}>
 
-                             <Text style={style.txtPerfil}>{item.nomeUsuario} </Text>
+                             <Text style={style.txtPerfil}>{item.nomeusuario} </Text>
 
                              <Text style={style.txtPerfil}>{item.email} </Text>
 

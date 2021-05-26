@@ -55,7 +55,7 @@ export default function Add (){
 
             </View>
 
-            <View style={style.vAdd}>
+            <View style={style.vBotaoAdd}>
 
                 <Text style={style.txtAdd}> Adicionar Renda </Text>
                 <Text style={style.txtAdd}> Adicionar Despesa </Text>
@@ -64,10 +64,10 @@ export default function Add (){
 
 
 
-            <View style={style.vBtnHome}>
+            <View style={style.vBtnAdd}>
 
                 <TouchableOpacity
-                    style={style.btnHome}
+                    style={style.btnAdd}
                     onPress={()=> navigation.navigate("telaHome")}
 
                     >
@@ -76,14 +76,14 @@ export default function Add (){
                 </TouchableOpacity>
 
                 <TouchableOpacity
-                    style={style.btnHome}
+                    style={style.btnAdd}
                     >
                     <MaterialIcons name="add-circle-outline" size={30} color="black" />
                     <Text> Adicionar </Text>
                 </TouchableOpacity>
 
                 <TouchableOpacity
-                    style={style.btnHome}
+                    style={style.btnAdd}
                     onPress={()=> navigation.navigate("Perfil")}
 
                     >

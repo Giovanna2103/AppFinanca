@@ -7,6 +7,9 @@ import { AntDesign } from '@expo/vector-icons';
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 import { ipserver } from '../config/settings';
+import * as SQLite from 'expo-sqlite';
+
+const banco = SQLite.openDatabase("yourcash.banco");
 
 
 let nomeusuario = "";
@@ -116,6 +119,7 @@ function Logar(){
         }
         else{
             x = 0;
+            gravar(rs.output[0]);
         }
 
     }).catch((erro) => console.error(`Erro ao tentar logar ${erro}`))
@@ -126,5 +130,26 @@ function Logar(){
 const wait = (time) =>{
     return new Promise((resolver)=>{
         setTimeout(resolver,time)
+    })
+}
+
+function gravar(dados){
+    banco.transaction((ts) => {
+        ts.executeSql(`create table if not exists tbcelular(id integer primary key, idcliente int,  
+        nomeusuario text,
+        senha text,
+        email text,
+        nome text,
+        datanascimento text,
+        sexo text )`);
+        ts.executeSql(`insert into tbcelular (idcliente,  
+            nomeusuario ,
+            senha ,
+            email ,
+            nome ,
+            datanascimento ,
+            sexo )values(?,?,?,?,?,?,?)`,[
+                dados.idCliente, dados.nomeUsuario, dados.senha, dados.email, dados.nome, dados.datanascimento, dados.sexo
+            ])
     })
 }

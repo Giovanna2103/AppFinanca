@@ -13,7 +13,7 @@ export const style = StyleSheet.create({
     padding:15,
     marginBottom:10,
     borderBottomColor:'#81c784',
-    borderBottomWidth:1
+    borderBottomWidth:1,
 
   },
 
@@ -22,12 +22,14 @@ export const style = StyleSheet.create({
     padding:10,
     marginTop:10,
     marginBottom:5,
-    height:395
+    height:395,
 
   },
 
+
   // --------- Tela Inicial -----------------
   
+
   logo: {
     width: "65%",
     height: "75%",
@@ -66,7 +68,9 @@ export const style = StyleSheet.create({
           
      },
     
+
   // ------------ Tela Cadastro ----------------
+
 
   cxsexo:{
     width:325,
@@ -90,12 +94,14 @@ export const style = StyleSheet.create({
     color:'black',
     fontWeight:'bold',
     textAlign:'center',
-    fontSize:20
+    fontSize:20,
 
   },
 
+
  // -------------- Tela de Login ---------------------
  
+
  logoLogin:{
   width: 300,
   height: 100,
@@ -147,7 +153,7 @@ export const style = StyleSheet.create({
  txtLoginCad:{
   color:'black',
   textAlign:'center',
-  fontSize:20
+  fontSize:20,
 
  },
 
@@ -155,136 +161,187 @@ export const style = StyleSheet.create({
   color:'black',
   fontWeight:'bold',
   textAlign:'left',
-  fontSize:25
+  fontSize:25,
 
  },
 
-//  -------------- Tela Home -----------------
 
-vBtnHome: {
-  flex:1.2,
-  flexDirection: "row",
-  width: "100%",
-  borderRadius:25,  
-  shadowColor: "black",
-  shadowOffset: { width: 10, height: 20 },
-  shadowOpacity: 0.9,
-  shadowRadius: 10,
-  elevation: 5,
-
-},
-
-btnHome: {
-  padding:25,
-  marginRight:10,
-  marginLeft:10,
-  alignItems: "center",
-  justifyContent: "center",
-
-},
-
-vSaldo:{
-  flex:2,
-  width:"100%",
-  backgroundColor:"#43a047",
-
-},
-
-txtSaldo:{
-  fontSize:35,
-  marginTop:50,
-  marginBottom:10,
-  color:"white",
-  textAlign:"center"
-
-},
-
-vHistorico:{
-  flex:5,
-  // borderColor:'red',
-  // borderWidth:3,
-  width:"100%",
-
-},
-
-txtHistorico:{
-  fontSize:20,
-  marginTop:10,
-  marginBottom:10,
-
-},
-
-vDadosHistorico:{
-  flexDirection: "row",
-
-},
-
-txtconta:{
-  fontSize:20,
-  marginTop:10,
-  marginBottom:10,
-  marginLeft:15,
-  marginRight:15,
-  borderColor:'red',
-  borderWidth:2,
-  
-},
-
-// ---------------------- Tela Adicionar -----------------------
-
-vAdd:{
-  flex:2,
-  flexDirection:"row",
-  width:"100%",
-  marginTop:20
-
-},
-
-txtAdd:{
-  fontSize:20,
-  marginTop:10,
-  marginBottom:10,
-  borderColor:'red',
-  borderWidth:3,
-  marginRight:4,
-  marginLeft:4,
-
-},
-
-vSaldoAdd:{
-  flex:1,
-  borderColor:'red',
-  borderWidth:3,
-  width:"80%",
-
-},
-
-txtSaldoAdd:{
-  fontSize:35,
-  marginTop:20,
-  marginBottom:10,
-  textAlign:"center"
-
-},
+  //  -------------- Tela Home -----------------
 
 
-// ----------------------- Tela Perfil --------------------------
+  vBtnHome: {
+    flex:1.2,
+    flexDirection: "row",
+    width: "100%",
+    borderRadius:25,  
+    shadowColor: "black",
+    shadowOffset: { width: 10, height: 20 },
+    shadowOpacity: 0.9,
+    shadowRadius: 10,
+    elevation: 5,
 
-vPerfil:{
-  flex:5.9,
-  width:"100%",
-  marginTop:20
+  },
 
-},
+  btnHome: {
+    padding:25,
+    marginRight:10,
+    marginLeft:10,
+    alignItems: "center",
+    justifyContent: "center",
 
-txtPerfil:{
-  fontSize:20,
-  marginTop:20,
-  marginBottom:10,
-  borderColor:'red',
-  borderWidth:3,
+  },
 
-},
+  vSaldo:{
+    flex:2,
+    width:"100%",
+    backgroundColor:"#43a047",
+
+  },
+
+  txtSaldo:{
+    fontSize:35,
+    marginTop:50,
+    marginBottom:10,
+    color:"white",
+    textAlign:"center",
+
+  },
+
+  vHistorico:{
+    flex:5,
+    width:"100%",
+
+  },
+
+  txtHistorico:{
+    fontSize:20,
+    marginTop:10,
+    marginBottom:10,
+
+  },
+
+  vDadosHistorico:{
+    flexDirection: "row",
+
+  },
+
+  txtconta:{
+    flex:1,
+    fontSize:16,
+    marginTop:10,
+    marginBottom:10,
+    marginLeft:5,
+    borderBottomWidth:1,
+    borderBottomColor:'silver'
+    
+  },
+
+  txtvalor:{
+    flex:1,
+    fontSize:16,
+    marginTop:10,
+    marginBottom:10,
+    textAlign:'left',
+    borderBottomWidth:1,
+    borderBottomColor:'silver'
+    
+  },
+
+  txtclassi:{
+    flex:1,
+    fontSize:16,
+    marginTop:10,
+    marginBottom:10,
+    textAlign:'center',
+    borderBottomWidth:1,
+    borderBottomColor:'silver'
+    
+  },
+
+
+  // ---------------------- Tela Adicionar -----------------------
+
+
+  vSaldoAdd:{
+    flex:1,
+    width:"100%",
+    backgroundColor:"#43a047",
+
+  },
+
+  txtSaldoAdd:{
+    fontSize:45,
+    marginTop:40,
+    marginBottom:10,
+    color:"white",
+    textAlign:"center",
+
+  },
+
+
+  vBotaoAdd:{
+    flex:2,
+    flexDirection:"row",
+    width:"98%",
+    marginTop:20,
+    borderColor:'red',
+    borderWidth:1,
+
+  },
+
+  txtAdd:{
+    fontSize:20,
+    marginTop:10,
+    marginBottom:10,
+    borderColor:'red',
+    borderWidth:1,
+    marginRight:4,
+    marginLeft:4,
+
+  },
+
+
+  vBtnAdd: {
+    flex:0.6,
+    flexDirection: "row",
+    width: "100%",
+    borderRadius:25,  
+    shadowColor: "black",
+    shadowOffset: { width: 10, height: 20 },
+    shadowOpacity: 0.9,
+    shadowRadius: 10,
+    elevation: 5,
+
+  },
+
+  btnAdd: {
+    padding:25,
+    marginRight:10,
+    marginLeft:10,
+    alignItems: "center",
+    justifyContent: "center",
+
+  },
+
+
+
+  // ----------------------- Tela Perfil --------------------------
+
+  vPerfil:{
+    flex:5.9,
+    width:"100%",
+    marginTop:20,
+
+  },
+
+  txtPerfil:{
+    fontSize:20,
+    marginTop:20,
+    marginBottom:10,
+    borderColor:'red',
+    borderWidth:3,
+
+  },
 
 
 

@@ -46,21 +46,24 @@ function telaHome({navigation}){
             </View>
 
             <View style={style.vHistorico}>
+
+                <ScrollView>
                 
-            <Text style={style.txtHistorico}> Historico</Text>
-            {
-                dados.map((item, index) => (
-                    <View style={style.vDadosHistorico}>
+                    <Text style={style.txtHistorico}> Historico</Text>
+                    {
+                        dados.map((item, index) => (
+                            <View key={item.id} style={style.vDadosHistorico}>
 
-                        <Text style={style.txtconta}>{item.tipodeConta}</Text>
+                             <Text style={style.txtconta}>{item.tipodeConta}</Text>
 
-                        <Text style={style.txtconta}> R${item.valorConta}</Text>
+                             <Text style={style.txtvalor}> R${item.valorConta}</Text>
 
-                        <Text style={style.txtconta}>{item.classificacao}</Text>
+                             <Text style={style.txtclassi}>{item.classificacao}</Text>
 
-                    </View>
-                ))
-            }
+                            </View>
+                        ))
+                    }
+                </ScrollView>
 
             </View>
 
