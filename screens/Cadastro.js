@@ -25,6 +25,9 @@ export default function Cadastro() {
 
   return (
     <View style={style.container}>
+
+      <Text style={style.txtCadastroInicio}> Faça o seu cadastro</Text>
+
       <ScrollView horizontal={false}>
         
 

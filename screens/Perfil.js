@@ -1,5 +1,5 @@
 import * as React from "react";
-import { View, Text, TextInput, Picker, Alert, ToastAndroid } from "react-native";
+import { View, Text} from "react-native";
 import { style } from "../css/styles";
 import { TouchableOpacity, ScrollView } from "react-native-gesture-handler";
 import { MaterialIcons,  MaterialCommunityIcons, FontAwesome } from "@expo/vector-icons";
@@ -55,10 +55,6 @@ function Perfil ({navigation}){
                              <Text style={style.txtPerfil}>{item.email} </Text>
 
                              <Text style={style.txtPerfil}>{item.nome} </Text>
-
-                             <Text style={style.txtPerfil}> Seu salario atual </Text>
-
-                             <Text style={style.txtPerfil}> Configuracoes </Text>
 
                             </View>
                         ))

@@ -57,11 +57,34 @@ export default function Add (){
 
             <View style={style.vBotaoAdd}>
 
-                <Text style={style.txtAdd}> Adicionar Renda </Text>
-                <Text style={style.txtAdd}> Adicionar Despesa </Text>
+                <TouchableOpacity style={style.btnrenda}>
+
+                    <TextInput
+                        style={style.inputRenda}
+                        placeholder="Nova renda"
+                    />
+
+
+                    <Text style={style.txtAdd}>Adicionar renda</Text>
+
+                </TouchableOpacity>
+
+
+
+                <TouchableOpacity style={style.btnrenda}>
+
+                    <TextInput
+                        style={style.inputRenda}
+                        placeholder="Nova despesa"
+                    />
+
+                    <Text style={style.txtAdd}>Adicionar despesa</Text>
+
+                </TouchableOpacity>
+
+
 
             </View>
-
 
 
             <View style={style.vBtnAdd}>
@@ -90,10 +113,6 @@ export default function Add (){
                     <FontAwesome name="user-o" size={30} color="black" />
                     <Text> Perfil </Text>
                 </TouchableOpacity>
-
-
-
-
 
             </View>
         </View>

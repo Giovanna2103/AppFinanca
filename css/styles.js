@@ -17,14 +17,6 @@ export const style = StyleSheet.create({
 
   },
 
-  cxInput:{
-    backgroundColor:'white',
-    padding:10,
-    marginTop:10,
-    marginBottom:5,
-    height:395,
-
-  },
 
 
   // --------- Tela Inicial -----------------
@@ -42,7 +34,7 @@ export const style = StyleSheet.create({
     flexDirection: "row",
     width: "90%",
     padding: 10,
-    backgroundColor: "#66bb6a",
+    backgroundColor: "#2196f3",
     borderRadius: 15,
     shadowColor: "black",
     shadowOffset: { width: 15, height: 15 },
@@ -78,6 +70,16 @@ export const style = StyleSheet.create({
 
   },
 
+  cxInput:{
+    backgroundColor:'white',
+    padding:10,
+    marginTop:10,
+    marginBottom:5,
+    height:395,
+
+  },
+
+
   btnCadastro:{
     marginTop:10,
     marginBottom:50,
@@ -98,6 +100,16 @@ export const style = StyleSheet.create({
 
   },
 
+  txtCadastroInicio:{
+    color:'black',
+    fontWeight:'bold',
+    textAlign:'center',
+    fontSize:20,
+    marginTop:40,    
+
+  },
+
+
 
  // -------------- Tela de Login ---------------------
  
@@ -107,13 +119,14 @@ export const style = StyleSheet.create({
   height: 100,
   marginRight: "auto",
   marginLeft: "auto",
+  marginTop:60,
   marginBottom:1,
   resizeMode: "contain",
 
  },
  
  btnLogin:{
-   flexDirection:"row",
+  flexDirection:"row",
   marginTop:20,
   marginBottom:10,
   backgroundColor:'#c5e1a5',
@@ -252,6 +265,7 @@ export const style = StyleSheet.create({
     fontSize:16,
     marginTop:10,
     marginBottom:10,
+    marginRight:5,
     textAlign:'center',
     borderBottomWidth:1,
     borderBottomColor:'silver'
@@ -271,7 +285,7 @@ export const style = StyleSheet.create({
 
   txtSaldoAdd:{
     fontSize:45,
-    marginTop:40,
+    marginTop:50,
     marginBottom:10,
     color:"white",
     textAlign:"center",
@@ -284,8 +298,6 @@ export const style = StyleSheet.create({
     flexDirection:"row",
     width:"98%",
     marginTop:20,
-    borderColor:'red',
-    borderWidth:1,
 
   },
 
@@ -293,10 +305,28 @@ export const style = StyleSheet.create({
     fontSize:20,
     marginTop:10,
     marginBottom:10,
-    borderColor:'red',
-    borderWidth:1,
     marginRight:4,
     marginLeft:4,
+    textAlign:"center"
+
+  },
+
+  btnrenda:{
+    marginTop:60,
+    marginLeft:15,
+    marginRight:15,
+    backgroundColor:'#c5e1a5',
+    padding:15,
+    width:150,
+    borderRadius:30,
+    alignItems:"center",
+
+  },
+
+  inputRenda:{
+    width:"90%",
+    padding:15,
+    marginBottom:5,
 
   },
 
@@ -324,8 +354,8 @@ export const style = StyleSheet.create({
   },
 
 
-
   // ----------------------- Tela Perfil --------------------------
+
 
   vPerfil:{
     flex:5.9,
@@ -342,14 +372,6 @@ export const style = StyleSheet.create({
     borderWidth:3,
 
   },
-
-
-
- 
-
-
-
-
 
 
 
