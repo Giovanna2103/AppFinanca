@@ -34,7 +34,7 @@ export const style = StyleSheet.create({
     flexDirection: "row",
     width: "90%",
     padding: 10,
-    backgroundColor: "#2196f3",
+    backgroundColor: "#c5e1a5",
     borderRadius: 15,
     shadowColor: "black",
     shadowOffset: { width: 15, height: 15 },
