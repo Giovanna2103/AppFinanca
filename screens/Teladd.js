@@ -41,18 +41,16 @@ export default function Add (){
 
 
             <View style={style.vSaldoAdd}>
-            {
-                dados.map((item, index) => (
-                    <View>
+                {
+                    dados.map((item, index) => (
+                        <View>
 
-                        <Text style={style.txtSaldoAdd}>R$ {item.totalRendimento}</Text>
+                            <Text style={style.itemsaldoAdd}> Saldo Atual </Text>
+                            <Text style={style.txtSaldoAdd}>R$ {item.totalRendimento}</Text>
 
-                    </View>
-                ))
-            }
-
-
-
+                        </View>
+                    ))
+                }
             </View>
 
             <View style={style.vBotaoAdd}>
@@ -64,11 +62,9 @@ export default function Add (){
                         placeholder="Nova renda"
                     />
 
-
                     <Text style={style.txtAdd}>Adicionar renda</Text>
 
                 </TouchableOpacity>
-
 
 
                 <TouchableOpacity style={style.btnrenda}>
@@ -81,8 +77,6 @@ export default function Add (){
                     <Text style={style.txtAdd}>Adicionar despesa</Text>
 
                 </TouchableOpacity>
-
-
 
             </View>
 

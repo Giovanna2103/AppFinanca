@@ -27,6 +27,8 @@ export default function Home (){
 
 function telaHome({navigation}){
     const [dados,setDados]=React.useState([])
+    const [saldo,setSaldo]=React.useState([])
+
 
 
     React.useEffect(() => {
@@ -35,13 +37,30 @@ function telaHome({navigation}){
         .then((rs) => setDados(rs.output)).catch((error) => console.error(`Dados não encontrado ${error}`))
     },[])
 
+    React.useEffect(() => {
+        fetch(`${ipserver}/receita/saldo`)
+        .then((response) => response.json())
+        .then((rs) => setSaldo(rs.output)).catch((error) => console.error(`Saldo não encontrado ${error}`))
+    },[])
+
+
     return(
 
         <View style={style.container}>
 
             <View style={style.vSaldo}>
 
-            <Text style={style.txtSaldo}> Seu saldo atual</Text>
+                {
+                    saldo.map((item, index) => (
+                        <View>
+                        
+                            
+                                <Text style={style.itemsaldo}> Saldo Atual </Text>
+                            <Text style={style.txtSaldo}>R$ {item.totalRendimento}</Text>
+
+                        </View>
+                    ))
+                }
 
             </View>
 

@@ -2,12 +2,13 @@ import * as React from "react";
 import { View, Text} from "react-native";
 import { style } from "../css/styles";
 import { TouchableOpacity, ScrollView } from "react-native-gesture-handler";
-import { MaterialIcons,  MaterialCommunityIcons, FontAwesome } from "@expo/vector-icons";
+import { MaterialIcons,  MaterialCommunityIcons, FontAwesome, AntDesign } from "@expo/vector-icons";
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 import { ipserver } from '../config/settings';
 import Teladd from "./Teladd";
 import telaHome from "./Home";
+import telaLogin from "./Login";
 import * as SQLite from 'expo-sqlite';
 
 const banco = SQLite.openDatabase("yourcash.banco");
@@ -22,6 +23,7 @@ export default function telaPerfil (){
         <lista.Screen name="Perfil" component={Perfil} options={{headerShown:false}}/>
         <lista.Screen name="Teladd" component={Teladd} options={{headerShown:false}}/>
          <lista.Screen name="telaHome" component={telaHome} options={{headerShown:false}}/>
+         <lista.Screen name="telaLogin" component={telaLogin} options={{headerShown:false}}/>
         </lista.Navigator>
     </NavigationContainer>
     )
@@ -46,19 +48,46 @@ function Perfil ({navigation}){
 
             <View style={style.vPerfil}>
                 <ScrollView>
+
+                    <TouchableOpacity 
+                    style={style.btnsair}
+                    onPress={()=> navigation.navigate("telaLogin")}
+                    >
+                        <AntDesign name="logout" size={30} color="#689f38" />
+                        <Text style={{color:"#689f38", textAlign:"center"}}> Sair </Text>
+                        
+                    </TouchableOpacity>
+
                     {
                         dados.map((item, index) => (
                             <View key={item.id}>
 
+                                <Text style={style.itemperfil}> Nome Usuario </Text>
                              <Text style={style.txtPerfil}>{item.nomeusuario} </Text>
 
+                                <Text style={style.itemperfil}> Email </Text>
                              <Text style={style.txtPerfil}>{item.email} </Text>
 
+                                <Text style={style.itemperfil}>Seu Nome </Text>
                              <Text style={style.txtPerfil}>{item.nome} </Text>
+
+                                <Text style={style.itemperfil}>Data Nascimento </Text>
+                             <Text style={style.txtPerfil}>{item.datanascimento} </Text>
+
 
                             </View>
                         ))
                     }
+
+                    <TouchableOpacity 
+                        style={style.btnconfig}
+                    >
+                        <Text style={style.txtconfig}>Configurações </Text>
+                        <AntDesign name="setting" size={24} color="#689f38" /> 
+
+                    </TouchableOpacity>
+
+
                 </ScrollView>
             </View>
 

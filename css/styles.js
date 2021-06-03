@@ -211,9 +211,16 @@ export const style = StyleSheet.create({
 
   },
 
+  itemsaldo:{
+    fontSize:20,
+    marginTop:35,
+    color:"white",
+    textAlign:"center",
+
+  },
+
   txtSaldo:{
-    fontSize:35,
-    marginTop:50,
+    fontSize:45,
     marginBottom:10,
     color:"white",
     textAlign:"center",
@@ -230,6 +237,7 @@ export const style = StyleSheet.create({
     fontSize:20,
     marginTop:10,
     marginBottom:10,
+    color:"#689f38",
 
   },
 
@@ -283,9 +291,17 @@ export const style = StyleSheet.create({
 
   },
 
+  itemsaldoAdd:{
+    fontSize:20,
+    marginTop:35,
+    color:"white",
+    textAlign:"center",
+    
+  },
+
+
   txtSaldoAdd:{
     fontSize:45,
-    marginTop:50,
     marginBottom:10,
     color:"white",
     textAlign:"center",
@@ -356,7 +372,16 @@ export const style = StyleSheet.create({
 
   // ----------------------- Tela Perfil --------------------------
 
+  btnsair:{
+    flex:1,
+    marginTop:20,
+    marginBottom:25,
+    marginLeft:'auto',
+    marginRight:10
 
+  },
+  
+  
   vPerfil:{
     flex:5.9,
     width:"100%",
@@ -364,15 +389,41 @@ export const style = StyleSheet.create({
 
   },
 
-  txtPerfil:{
-    fontSize:20,
-    marginTop:20,
-    marginBottom:10,
-    borderColor:'red',
-    borderWidth:3,
+  itemperfil:{
+    fontSize:10,
+    marginTop:10,
+    color:"#689f38",
+    marginLeft:15,
 
   },
 
+  txtPerfil:{
+    fontSize:18,
+    fontWeight:"bold",
+    marginBottom:25,
+    marginLeft:15,
+    marginRight:15,
+    borderBottomColor:"#689f38",
+    borderBottomWidth:1,
 
+  },
+
+  btnconfig:{
+    flexDirection:"row",
+    marginRight:"auto",
+    marginLeft:15,
+    marginTop:10,
+    borderBottomColor:"#689f38",
+    borderBottomWidth:1,
+
+  },
+
+  txtconfig:{
+    fontSize:18,
+    fontWeight:"bold",
+    marginBottom:5,
+    marginRight:185,
+
+  },
 
 });
