@@ -285,7 +285,7 @@ export const style = StyleSheet.create({
 
 
   vSaldoAdd:{
-    flex:1,
+    flex:1.2,
     width:"100%",
     backgroundColor:"#43a047",
 
@@ -308,12 +308,43 @@ export const style = StyleSheet.create({
 
   },
 
-
-  vBotaoAdd:{
+  areaAdd:{
     flex:2,
     flexDirection:"row",
+    marginBottom:1,
+
+  },
+
+  renda:{
+    width:"50%",
+    padding:5,
+    marginBottom:2,
+    borderLeftColor:"#81c784",
+    borderLeftWidth:1
+  },
+
+  inputclassi:{
+    width:"100%",
+    padding:5,
+    marginBottom:5,
+
+  },
+
+  inputRenda:{
+    width:"100%",
+    padding:15,
+    marginBottom:10,
+    borderBottomColor:'#81c784',
+    borderBottomWidth:1,
+
+  },
+
+  vBotaoAdd:{
+    flex:1,
+    flexDirection:"row",
     width:"98%",
-    marginTop:20,
+    marginTop:5,
+    marginBottom:5,
 
   },
 
@@ -328,27 +359,33 @@ export const style = StyleSheet.create({
   },
 
   btnrenda:{
-    marginTop:60,
+    marginTop:10,
     marginLeft:15,
     marginRight:15,
     backgroundColor:'#c5e1a5',
     padding:15,
     width:150,
     borderRadius:30,
-    alignItems:"center",
+    alignItems:"center",    
 
   },
 
-  inputRenda:{
-    width:"90%",
+  btndespesa:{
+    marginTop:10,
+    marginLeft:15,
+    marginRight:15,
+    backgroundColor:'#c5e1a5',
     padding:15,
-    marginBottom:5,
+    width:150,
+    borderRadius:30,
+    alignItems:"center",    
 
   },
+
 
 
   vBtnAdd: {
-    flex:0.6,
+    flex:0.8,
     flexDirection: "row",
     width: "100%",
     borderRadius:25,  

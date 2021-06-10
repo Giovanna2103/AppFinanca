@@ -1,5 +1,5 @@
 import * as React from "react";
-import { View, Text} from "react-native";
+import { View, Text, Alert} from "react-native";
 import { style } from "../css/styles";
 import { TouchableOpacity, ScrollView } from "react-native-gesture-handler";
 import { MaterialIcons,  MaterialCommunityIcons, FontAwesome, AntDesign } from "@expo/vector-icons";
@@ -36,7 +36,7 @@ function Perfil ({navigation}){
 
     React.useEffect(() => {
         banco.transaction((info) =>{
-            info.executeSql("select * from tbcelular", [], (_,{rows:{_array}}) => {
+            info.executeSql("select * from tbcelular limit 0,1", [], (_,{rows:{_array}}) => {
                 setDados(_array)
             })
         })
@@ -51,7 +51,12 @@ function Perfil ({navigation}){
 
                     <TouchableOpacity 
                     style={style.btnsair}
-                    onPress={()=> navigation.navigate("telaLogin")}
+                    onPress={()=>{ 
+                        banco.transaction((sair) => {
+                            sair.executeSql("delete from tbcelular");
+                            Alert.alert("Saindo","Tchauuuuuuuuuuuuu")
+                        })
+                        navigation.navigate("telaLogin")}}
                     >
                         <AntDesign name="logout" size={30} color="#689f38" />
                         <Text style={{color:"#689f38", textAlign:"center"}}> Sair </Text>

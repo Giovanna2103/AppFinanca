@@ -9,6 +9,14 @@ import { ipserver } from '../config/settings';
 import Perfil from "./Perfil";
 import telaHome from "./Home";
 
+let vd = "";   // Valor Despesa
+let nd = "";   // Nome Despesa
+let cl = "";   // Classificação Despesa
+
+let vr = "";   // Valor Renda
+let tr = "";   // Tipo de Renda
+
+
 const lista = createStackNavigator()
 
 
@@ -25,14 +33,27 @@ export default function Add (){
 }
 
 
- function Teladd ({navigation}){
-    const [dados,setDados]=React.useState([])
+function Teladd ({navigation}){
+    const [dados,setDados] = React.useState([]);
+    const [renda, setRenda] = React.useState("");
+    const [tiporenda, setTipoRenda] = React.useState("");
+    const [valordespesa, setValordespesa] = React.useState("");
+    const [nomedespesa, setNomedespesa] = React.useState("");
+    const [classificacao, setClassificacao] = React.useState("");
+    const [saldo, setSaldo] = React.useState(0);
+
+
+
+
 
 
     React.useEffect(() => {
         fetch(`${ipserver}/receita/saldo`)
         .then((response) => response.json())
-        .then((rs) => setDados(rs.output)).catch((error) => console.error(`Dados não encontrado ${error}`))
+        .then((rs) => {
+            setDados(rs.output)
+            setSaldo(rs.output[0].SaldoFinal)
+        }).catch((error) => console.error(`Dados não encontrado ${error}`))
     },[])
 
     return(
@@ -41,38 +62,135 @@ export default function Add (){
 
 
             <View style={style.vSaldoAdd}>
+                <Text style={style.itemsaldoAdd}> Saldo Atual </Text>
+
                 {
                     dados.map((item, index) => (
                         <View>
 
-                            <Text style={style.itemsaldoAdd}> Saldo Atual </Text>
-                            <Text style={style.txtSaldoAdd}>R$ {item.totalRendimento}</Text>
+                            <Text style={style.txtSaldoAdd}>R$ {saldo}</Text>
 
                         </View>
                     ))
                 }
             </View>
 
+
+
+
+            {/* --------------- Cadastramento das rendas e despesas ------------------ */}
+
+            <View style={style.areaAdd}>
+
+                <ScrollView horizontal={false} >
+
+                    <View style={{flexDirection:"row"}}>
+
+                        {/* ---------------- Renda -------------------- */}
+                        <View style={style.renda}>
+
+                            <TextInput
+                                style={style.inputRenda}
+                                placeholder="Valor renda"
+                                keyboardType="number-pad"
+                                value={renda}
+                                onChangeText={(value) => setRenda(value)}
+                            />
+
+                            <Picker
+                            mode="dialog"
+                            style={style.inputclassi}
+                            selectedValue={tiporenda}
+                            onValueChange={setTipoRenda}
+                            >
+
+                            <Picker.Item label="Renda Fixa" value="Renda Fixa" />
+                            <Picker.Item label="Renda Extra" value="Renda Extra" />
+
+                            </Picker>
+
+                        </View>
+
+
+
+                        {/* ---------------- Despesas -------------------- */}
+
+                        <View style={style.renda}>
+
+
+                            <TextInput
+                                    style={style.inputRenda}
+                                    placeholder="Valor da Despesa"
+                                    keyboardType="number-pad"
+                                    value={valordespesa}
+                                    onChangeText={(value) => setValordespesa(value)}
+                            />
+
+                            <TextInput
+                                    style={style.inputRenda}
+                                    placeholder="Nome Despesa"
+                                    keyboardType="default"
+                                    value={nomedespesa}
+                                    onChangeText={(value) => setNomedespesa(value)}
+                            />
+
+
+                            <Picker
+                                mode="dialog"
+                                style={style.inputclassi}
+                                selectedValue={classificacao}
+                                onValueChange={setClassificacao}
+                                >
+
+                                <Picker.Item label="Despesa Mensal" value="Despesa Mensal" />
+                                <Picker.Item label="Despesa Extra" value="Despesa Extra" />
+
+                            </Picker>
+
+                        </View>
+
+                    </View>
+
+                </ScrollView>
+
+            </View>
+
+
+
+
+            {/* ----------------- Area dos botoes ---------------------*/}
+
             <View style={style.vBotaoAdd}>
 
-                <TouchableOpacity style={style.btnrenda}>
+                <TouchableOpacity 
+                    style={style.btnrenda}
+                    onPress={() => {
+                     vr = renda;
+                     tr = tiporenda;
 
-                    <TextInput
-                        style={style.inputRenda}
-                        placeholder="Nova renda"
-                    />
+                     contaRenda();
+                     ToastAndroid.showWithGravity("Aguarde... Efetuando conta", ToastAndroid.SHORT, ToastAndroid.CENTER);
+
+                    }}
+                >
 
                     <Text style={style.txtAdd}>Adicionar renda</Text>
 
                 </TouchableOpacity>
 
 
-                <TouchableOpacity style={style.btnrenda}>
+                <TouchableOpacity 
+                    style={style.btndespesa} 
+                    onPress={() => {
+                     vd = valordespesa;
+                     nd = nomedespesa;
+                     cl = classificacao;
 
-                    <TextInput
-                        style={style.inputRenda}
-                        placeholder="Nova despesa"
-                    />
+                     contaDespesa();
+                     ToastAndroid.showWithGravity("Aguarde... Efetuando conta", ToastAndroid.SHORT, ToastAndroid.CENTER);
+
+                    }}
+                >
 
                     <Text style={style.txtAdd}>Adicionar despesa</Text>
 
@@ -80,13 +198,14 @@ export default function Add (){
 
             </View>
 
+            {/* ---------- Área Navegaçao para outras telas ------------- */}
+
 
             <View style={style.vBtnAdd}>
 
                 <TouchableOpacity
                     style={style.btnAdd}
                     onPress={()=> navigation.navigate("telaHome")}
-
                     >
                     <MaterialCommunityIcons name="home-currency-usd" size={30} color="black" />          
                     <Text> Home </Text>
@@ -102,7 +221,6 @@ export default function Add (){
                 <TouchableOpacity
                     style={style.btnAdd}
                     onPress={()=> navigation.navigate("Perfil")}
-
                     >
                     <FontAwesome name="user-o" size={30} color="black" />
                     <Text> Perfil </Text>
@@ -112,3 +230,45 @@ export default function Add (){
         </View>
     );
 }
+
+function contaDespesa() {
+ 
+      fetch(`${ipserver}/despesas`, {
+        method: "POST",
+        headers: {
+          accept: "application/json",
+          "content-type": "application/json",
+        },
+        body: JSON.stringify({
+            valorConta:vd,
+            nomedaConta:nd,
+            classificacao:cl
+  
+        }),
+      })
+        .then((response) => response.json())
+        .then((rs) => console.log(rs))
+        .catch((error) => console.error(`Erro ao tentar realizar a conta -> ${error}`));
+  
+}
+
+function contaRenda() {
+ 
+    fetch(`${ipserver}/receita`, {
+      method: "POST",
+      headers: {
+        accept: "application/json",
+        "content-type": "application/json",
+      },
+      body: JSON.stringify({
+          renda:vr,
+          tipodeRenda:tr,
+
+      }),
+    })
+      .then((response) => response.json())
+      .then((rs) => console.log(rs))
+      .catch((error) => console.error(`Erro ao tentar efetuar a função -> ${error}`));
+
+}
+

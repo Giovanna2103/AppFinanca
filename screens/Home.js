@@ -30,7 +30,6 @@ function telaHome({navigation}){
     const [saldo,setSaldo]=React.useState([])
 
 
-
     React.useEffect(() => {
         fetch(`${ipserver}/despesas/listar`)
         .then((response) => response.json())
@@ -50,13 +49,14 @@ function telaHome({navigation}){
 
             <View style={style.vSaldo}>
 
+                <Text style={style.itemsaldo}> Saldo Atual </Text>
+
                 {
                     saldo.map((item, index) => (
                         <View>
                         
                             
-                                <Text style={style.itemsaldo}> Saldo Atual </Text>
-                            <Text style={style.txtSaldo}>R$ {item.totalRendimento}</Text>
+                            <Text style={style.txtSaldo}>R$ {item.SaldoFinal}</Text>
 
                         </View>
                     ))
@@ -73,7 +73,7 @@ function telaHome({navigation}){
                         dados.map((item, index) => (
                             <View key={item.id} style={style.vDadosHistorico}>
 
-                             <Text style={style.txtconta}>{item.tipodeConta}</Text>
+                             <Text style={style.txtconta}>{item.nomedaConta}</Text>
 
                              <Text style={style.txtvalor}> R${item.valorConta}</Text>
 

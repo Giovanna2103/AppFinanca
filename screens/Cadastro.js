@@ -8,7 +8,7 @@ let us = ""; // USUARIO
 let sh = ""; // SENHA
 let em = ""; // email
 let nc = ""; // nome completo
-let dn = ""; //  data nascimento
+let dn = ""; // data nascimento
 let sx = ""; // sexo
 
 

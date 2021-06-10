@@ -69,15 +69,16 @@ function telaLogin({navigation}){
                  sh=senha;
 
                  wait(3000).then(()=>Logar()).then(()=>{
-                 console.log(x);
-                 if(x==1){
-                    Alert.alert("Aguarde.....", "Usuario não existente")
-                 }
-                 else{
-                    Alert.alert("Aguarde....", "ENTROUUUUUUUUU")
-                    navigation.navigate("telaHome")
-                 }
-                })
+                    console.log(x);
+                    if(x==1){
+                        Alert.alert("Aguarde.....", "Usuario não existente")
+                    }
+                    else{
+                        Alert.alert("Aguarde....", "ENTROUUUUUUUUU")
+                        navigation.navigate("telaHome")
+                    }
+                 })
+                    alert("Aguarde")
 
                  }}>
                  <Text style={style.txtLogin}> Entrar </Text>
