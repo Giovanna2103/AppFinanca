@@ -37,6 +37,13 @@ function telaHome({navigation}){
     },[])
 
     React.useEffect(() => {
+        fetch(`${ipserver}/receita/listar`)
+        .then((response) => response.json())
+        .then((rs) => setDados(rs.output)).catch((error) => console.error(`Dados não encontrado ${error}`))
+    },[])
+
+
+    React.useEffect(() => {
         fetch(`${ipserver}/receita/saldo`)
         .then((response) => response.json())
         .then((rs) => setSaldo(rs.output)).catch((error) => console.error(`Saldo não encontrado ${error}`))
@@ -53,8 +60,7 @@ function telaHome({navigation}){
 
                 {
                     saldo.map((item, index) => (
-                        <View>
-                        
+                        <View key={item.id}>
                             
                             <Text style={style.txtSaldo}>R$ {item.SaldoFinal}</Text>
 
@@ -80,6 +86,7 @@ function telaHome({navigation}){
                              <Text style={style.txtclassi}>{item.classificacao}</Text>
 
                             </View>
+
                         ))
                     }
                 </ScrollView>

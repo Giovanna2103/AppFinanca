@@ -8,6 +8,10 @@ import { createStackNavigator } from "@react-navigation/stack";
 import { ipserver } from '../config/settings';
 import Perfil from "./Perfil";
 import telaHome from "./Home";
+import * as SQLite from 'expo-sqlite';
+
+const banco = SQLite.openDatabase("yourcash.banco");
+
 
 let vd = "";   // Valor Despesa
 let nd = "";   // Nome Despesa
@@ -15,6 +19,10 @@ let cl = "";   // Classificação Despesa
 
 let vr = "";   // Valor Renda
 let tr = "";   // Tipo de Renda
+
+let sf = "";
+let ic = "";
+let is = "";
 
 
 const lista = createStackNavigator()
@@ -182,11 +190,15 @@ function Teladd ({navigation}){
                 <TouchableOpacity 
                     style={style.btndespesa} 
                     onPress={() => {
+                        setSaldo(saldo-valordespesa)
+
                      vd = valordespesa;
                      nd = nomedespesa;
                      cl = classificacao;
+                     sf = saldo-valordespesa;
 
-                     contaDespesa();
+
+                    esperar(2000).then (() => contaDespesa())
                      ToastAndroid.showWithGravity("Aguarde... Efetuando conta", ToastAndroid.SHORT, ToastAndroid.CENTER);
 
                     }}
@@ -232,6 +244,14 @@ function Teladd ({navigation}){
 }
 
 function contaDespesa() {
+    let cli = 1
+    banco.transaction((info) =>{
+        info.executeSql("select * from tbcelular limit 0,1", [], (_,{rows:{_array}}) => {
+            cli=_array[0].idcliente
+            console.log(_array[0].idcliente)
+        })
+    })
+
  
       fetch(`${ipserver}/despesas`, {
         method: "POST",
@@ -242,7 +262,11 @@ function contaDespesa() {
         body: JSON.stringify({
             valorConta:vd,
             nomedaConta:nd,
-            classificacao:cl
+            classificacao:cl,
+            SaldoFinal:sf,
+            idCliente:cli,
+            idSalario:2
+            
   
         }),
       })
@@ -270,5 +294,11 @@ function contaRenda() {
       .then((rs) => console.log(rs))
       .catch((error) => console.error(`Erro ao tentar efetuar a função -> ${error}`));
 
+}
+
+const esperar = (tempo) => {
+    return new Promise((resolver) => {
+        setTimeout(resolver,tempo)
+    })
 }
 
