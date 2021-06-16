@@ -2,7 +2,7 @@ import * as React from "react";
 import { View, Text, TextInput, Picker, Alert, ToastAndroid } from "react-native";
 import { style } from "../css/styles";
 import { TouchableOpacity, ScrollView } from "react-native-gesture-handler";
-import { ipserver} from "../config/settings"
+import { ipserver } from "../config/settings"
 
 let us = ""; // USUARIO
 let sh = ""; // SENHA
@@ -29,7 +29,7 @@ export default function Cadastro() {
       <Text style={style.txtCadastroInicio}> Faça o seu cadastro</Text>
 
       <ScrollView horizontal={false}>
-        
+
 
         {/* Começo  Área do cadastro de Cliente */}
 
@@ -77,13 +77,13 @@ export default function Cadastro() {
             onChangeText={(value) => setEmail(value)}
           />
 
-        {/* Fim da área do cadastro de Contato */}
+          {/* Fim da área do cadastro de Contato */}
 
 
-        {/* -------------------------------------------------------------------------------------------------------------------------------------- */}
+          {/* -------------------------------------------------------------------------------------------------------------------------------------- */}
 
 
-        {/* Começo  Área do cadastro de Usuario */}
+          {/* Começo  Área do cadastro de Usuario */}
 
           <TextInput
             style={style.input}
@@ -120,6 +120,9 @@ export default function Cadastro() {
 
             efetuarCadastro();
             ToastAndroid.showWithGravity("Aguarde... Efetuando o cadastro", ToastAndroid.SHORT, ToastAndroid.CENTER);
+
+            alert("Cadastro concluido com sucesso")
+
           }}
         >
           <Text style={style.txtCadastro}> Cadastrar </Text>
@@ -133,26 +136,26 @@ function efetuarCadastro() {
   let idusuario = "";
 
 
-    fetch(`${ipserver}/usuario/cadastro`, {
-      method: "POST",
-      headers: {
-        accept: "application/json",
-        "content-type": "application/json",
-      },
-      body: JSON.stringify({
-        nomeusuario: us,
-        senha: sh,
-        email: em,
-        nome:nc,
-        datanascimento:dn,
-        sexo:sx
+  fetch(`${ipserver}/usuario/cadastro`, {
+    method: "POST",
+    headers: {
+      accept: "application/json",
+      "content-type": "application/json",
+    },
+    body: JSON.stringify({
+      nomeusuario: us,
+      senha: sh,
+      email: em,
+      nome: nc,
+      datanascimento: dn,
+      sexo: sx
 
-      }),
-    })
-      .then((response) => response.json())
-      .then((rs) => console.log(rs))
-      .catch((error) => console.error(`Erro ao tentar cadastrar -> ${error}`));
+    }),
+  })
+    .then((response) => response.json())
+    .then((rs) => console.log(rs))
+    .catch((error) => console.error(`Erro ao tentar cadastrar -> ${error}`));
 
-    
+
 }
 
