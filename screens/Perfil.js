@@ -5,10 +5,10 @@ import { TouchableOpacity, ScrollView } from "react-native-gesture-handler";
 import { MaterialIcons,  MaterialCommunityIcons, FontAwesome, AntDesign } from "@expo/vector-icons";
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
-import { ipserver } from '../config/settings';
 import Teladd from "./Teladd";
 import telaHome from "./Home";
 import telaLogin from "./Login";
+import TelaInicial from "../App";
 import * as SQLite from 'expo-sqlite';
 
 const banco = SQLite.openDatabase("yourcash.banco");
@@ -23,7 +23,7 @@ export default function telaPerfil (){
         <lista.Screen name="Perfil" component={Perfil} options={{headerShown:false}}/>
         <lista.Screen name="Teladd" component={Teladd} options={{headerShown:false}}/>
          <lista.Screen name="telaHome" component={telaHome} options={{headerShown:false}}/>
-         <lista.Screen name="telaLogin" component={telaLogin} options={{headerShown:false}}/>
+         <lista.Screen name="TelaInicial" component={TelaInicial} options={{headerShown:false}}/>
         </lista.Navigator>
     </NavigationContainer>
     )
@@ -56,7 +56,7 @@ function Perfil ({navigation}){
                             sair.executeSql("delete from tbcelular");
                             Alert.alert("Saindo","Tchauuuuuuuuuuuuu")
                         })
-                        navigation.navigate("telaLogin")}}
+                        navigation.navigate("TelaInicial")}}
                     >
                         <AntDesign name="logout" size={30} color="#689f38" />
                         <Text style={{color:"#689f38", textAlign:"center"}}> Sair </Text>

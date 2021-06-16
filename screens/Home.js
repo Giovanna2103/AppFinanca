@@ -30,14 +30,9 @@ function telaHome({navigation}){
     const [saldo,setSaldo]=React.useState([])
 
 
-    React.useEffect(() => {
-        fetch(`${ipserver}/despesas/listar`)
-        .then((response) => response.json())
-        .then((rs) => setDados(rs.output)).catch((error) => console.error(`Dados não encontrado ${error}`))
-    },[])
 
     React.useEffect(() => {
-        fetch(`${ipserver}/receita/listar`)
+        fetch(`${ipserver}/despesas/listar`)
         .then((response) => response.json())
         .then((rs) => setDados(rs.output)).catch((error) => console.error(`Dados não encontrado ${error}`))
     },[])
@@ -89,6 +84,7 @@ function telaHome({navigation}){
 
                         ))
                     }
+
                 </ScrollView>
 
             </View>

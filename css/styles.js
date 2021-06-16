@@ -32,7 +32,7 @@ export const style = StyleSheet.create({
 
   btnApp: {
     flexDirection: "row",
-    width: "90%",
+    width: "30%",
     padding: 10,
     backgroundColor: "#c5e1a5",
     borderRadius: 15,
@@ -270,7 +270,7 @@ export const style = StyleSheet.create({
 
   txtclassi:{
     flex:1,
-    fontSize:16,
+    fontSize:15,
     marginTop:10,
     marginBottom:10,
     marginRight:5,

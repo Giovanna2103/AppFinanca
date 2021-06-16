@@ -20,9 +20,8 @@ let cl = "";   // Classificação Despesa
 let vr = "";   // Valor Renda
 let tr = "";   // Tipo de Renda
 
-let sf = "";
-let ic = "";
-let is = "";
+let sf = "";   // Saldo Final
+
 
 
 const lista = createStackNavigator()
@@ -51,10 +50,6 @@ function Teladd ({navigation}){
     const [saldo, setSaldo] = React.useState(0);
 
 
-
-
-
-
     React.useEffect(() => {
         fetch(`${ipserver}/receita/saldo`)
         .then((response) => response.json())
@@ -68,22 +63,18 @@ function Teladd ({navigation}){
 
         <View style={style.container}>
 
-
             <View style={style.vSaldoAdd}>
+
                 <Text style={style.itemsaldoAdd}> Saldo Atual </Text>
 
                 {
                     dados.map((item, index) => (
-                        <View>
-
+                        <View key={item.id}>
                             <Text style={style.txtSaldoAdd}>R$ {saldo}</Text>
-
                         </View>
                     ))
                 }
             </View>
-
-
 
 
             {/* --------------- Cadastramento das rendas e despesas ------------------ */}
@@ -106,7 +97,7 @@ function Teladd ({navigation}){
                             />
 
                             <Picker
-                            mode="dialog"
+                            mode="dropdown"
                             style={style.inputclassi}
                             selectedValue={tiporenda}
                             onValueChange={setTipoRenda}
@@ -119,39 +110,37 @@ function Teladd ({navigation}){
 
                         </View>
 
-
-
                         {/* ---------------- Despesas -------------------- */}
 
                         <View style={style.renda}>
 
-
                             <TextInput
-                                    style={style.inputRenda}
-                                    placeholder="Valor da Despesa"
-                                    keyboardType="number-pad"
-                                    value={valordespesa}
-                                    onChangeText={(value) => setValordespesa(value)}
+                             style={style.inputRenda}
+                             placeholder="Valor da Despesa"
+                             keyboardType="number-pad"
+                             value={valordespesa}
+                             onChangeText={(value) => setValordespesa(value)}
                             />
 
                             <TextInput
-                                    style={style.inputRenda}
-                                    placeholder="Nome Despesa"
-                                    keyboardType="default"
-                                    value={nomedespesa}
-                                    onChangeText={(value) => setNomedespesa(value)}
+                             style={style.inputRenda}
+                             placeholder="Nome Despesa"
+                             keyboardType="default"
+                             value={nomedespesa}
+                             onChangeText={(value) => setNomedespesa(value)}
                             />
 
 
                             <Picker
-                                mode="dialog"
-                                style={style.inputclassi}
-                                selectedValue={classificacao}
-                                onValueChange={setClassificacao}
-                                >
+                             mode="dropdown"
+                             style={style.inputclassi}
+                             selectedValue={classificacao}
+                             onValueChange={setClassificacao}
+                            >
 
-                                <Picker.Item label="Despesa Mensal" value="Despesa Mensal" />
-                                <Picker.Item label="Despesa Extra" value="Despesa Extra" />
+                             <Picker.Item label="Despesa Extra" value="Despesa Extra" />
+                             <Picker.Item label="Despesa Mensal" value="Despesa Mensal" />
+
 
                             </Picker>
 
@@ -164,8 +153,6 @@ function Teladd ({navigation}){
             </View>
 
 
-
-
             {/* ----------------- Area dos botoes ---------------------*/}
 
             <View style={style.vBotaoAdd}>
@@ -173,16 +160,19 @@ function Teladd ({navigation}){
                 <TouchableOpacity 
                     style={style.btnrenda}
                     onPress={() => {
+                        setSaldo(saldo+parseFloat(renda))
+
                      vr = renda;
                      tr = tiporenda;
+                     sf = saldo+parseFloat(renda);
 
-                     contaRenda();
+                     esperar(2000).then (() => contaRenda())
                      ToastAndroid.showWithGravity("Aguarde... Efetuando conta", ToastAndroid.SHORT, ToastAndroid.CENTER);
 
                     }}
                 >
 
-                    <Text style={style.txtAdd}>Adicionar renda</Text>
+                 <Text style={style.txtAdd}>Adicionar renda</Text>
 
                 </TouchableOpacity>
 
@@ -198,13 +188,13 @@ function Teladd ({navigation}){
                      sf = saldo-valordespesa;
 
 
-                    esperar(2000).then (() => contaDespesa())
+                     esperar(2000).then (() => contaDespesa())
                      ToastAndroid.showWithGravity("Aguarde... Efetuando conta", ToastAndroid.SHORT, ToastAndroid.CENTER);
 
                     }}
                 >
 
-                    <Text style={style.txtAdd}>Adicionar despesa</Text>
+                 <Text style={style.txtAdd}>Adicionar despesa</Text>
 
                 </TouchableOpacity>
 
@@ -216,26 +206,26 @@ function Teladd ({navigation}){
             <View style={style.vBtnAdd}>
 
                 <TouchableOpacity
-                    style={style.btnAdd}
-                    onPress={()=> navigation.navigate("telaHome")}
-                    >
-                    <MaterialCommunityIcons name="home-currency-usd" size={30} color="black" />          
-                    <Text> Home </Text>
+                 style={style.btnAdd}
+                 onPress={()=> navigation.navigate("telaHome")}
+                >
+                 <MaterialCommunityIcons name="home-currency-usd" size={30} color="black" />          
+                 <Text> Home </Text>
                 </TouchableOpacity>
 
                 <TouchableOpacity
-                    style={style.btnAdd}
-                    >
-                    <MaterialIcons name="add-circle-outline" size={30} color="black" />
-                    <Text> Adicionar </Text>
+                 style={style.btnAdd}
+                >
+                 <MaterialIcons name="add-circle-outline" size={30} color="black" />
+                 <Text> Adicionar </Text>
                 </TouchableOpacity>
 
                 <TouchableOpacity
-                    style={style.btnAdd}
-                    onPress={()=> navigation.navigate("Perfil")}
-                    >
-                    <FontAwesome name="user-o" size={30} color="black" />
-                    <Text> Perfil </Text>
+                 style={style.btnAdd}
+                 onPress={()=> navigation.navigate("Perfil")}
+                >
+                 <FontAwesome name="user-o" size={30} color="black" />
+                 <Text> Perfil </Text>
                 </TouchableOpacity>
 
             </View>
@@ -243,8 +233,13 @@ function Teladd ({navigation}){
     );
 }
 
+
+// ---------------- Função para conta de Despesas (-) -----------------------
+
+
 function contaDespesa() {
-    let cli = 1
+ let cli = 1
+
     banco.transaction((info) =>{
         info.executeSql("select * from tbcelular limit 0,1", [], (_,{rows:{_array}}) => {
             cli=_array[0].idcliente
@@ -253,10 +248,10 @@ function contaDespesa() {
     })
 
  
-      fetch(`${ipserver}/despesas`, {
-        method: "POST",
+    fetch(`${ipserver}/despesas`, {
+     method: "POST",
         headers: {
-          accept: "application/json",
+            accept: "application/json",
           "content-type": "application/json",
         },
         body: JSON.stringify({
@@ -266,20 +261,31 @@ function contaDespesa() {
             SaldoFinal:sf,
             idCliente:cli,
             idSalario:2
-            
-  
         }),
-      })
-        .then((response) => response.json())
-        .then((rs) => console.log(rs))
-        .catch((error) => console.error(`Erro ao tentar realizar a conta -> ${error}`));
+    })
+    .then((response) => response.json())
+    .then((rs) => console.log(rs))
+    .catch((error) => console.error(`Erro ao tentar realizar a conta -> ${error}`));
   
 }
 
+
+// ---------------- Função para conta de Renda (+) -----------------------
+
+
 function contaRenda() {
+    let cli = 1
+
+    banco.transaction((info) =>{
+        info.executeSql("select * from tbcelular limit 0,1", [], (_,{rows:{_array}}) => {
+            cli=_array[0].idcliente
+            console.log(_array[0].idcliente)
+        })
+    })
+
  
     fetch(`${ipserver}/receita`, {
-      method: "POST",
+     method: "POST",
       headers: {
         accept: "application/json",
         "content-type": "application/json",
@@ -287,12 +293,14 @@ function contaRenda() {
       body: JSON.stringify({
           renda:vr,
           tipodeRenda:tr,
-
-      }),
+          SaldoFinal:sf,
+          idCliente:cli,
+          idDespesa:2
+        }),
     })
-      .then((response) => response.json())
-      .then((rs) => console.log(rs))
-      .catch((error) => console.error(`Erro ao tentar efetuar a função -> ${error}`));
+    .then((response) => response.json())
+    .then((rs) => console.log(rs))
+    .catch((error) => console.error(`Erro ao tentar efetuar a função -> ${error}`));
 
 }
 
@@ -301,4 +309,3 @@ const esperar = (tempo) => {
         setTimeout(resolver,tempo)
     })
 }
-

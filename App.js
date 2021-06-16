@@ -32,28 +32,22 @@ function TelaInicial({ navigation }) {
   return (
     <View style={style.container}>
 
-    <Image source ={require('./assets/LogoApp2.png')} style={style.logoHome}/>
+      <Image source ={require('./assets/LogoApp2.png')} style={style.logoHome}/>
 
-      <View style={style.btnApp}>
+        <View style={style.btnApp}>
 
-        <TouchableOpacity
-          style={style.btn}
-          onPress={() => navigation.navigate("Login")}
-        >
-          <MaterialIcons name="login" size={40} color="black" />
-          <Text> Login </Text>
-        </TouchableOpacity>
-
-        <TouchableOpacity
-          style={style.btn}
-          onPress={() => navigation.navigate("telaHome")}
+          <TouchableOpacity
+            style={style.btn}
+            onPress={() => navigation.navigate("Login")}
           >
-          <MaterialCommunityIcons name="home-currency-usd" size={40} color="black" />          
-          <Text> Home </Text>
-        </TouchableOpacity>
-      </View>
+            <MaterialIcons name="login" size={40} color="black" />
+            <Text> Login </Text>
+          </TouchableOpacity>
 
-      <StatusBar style="auto" />
+        </View>
+
+        <StatusBar style="auto" />
+
     </View>
   );
 }
